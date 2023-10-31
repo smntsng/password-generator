@@ -91,8 +91,8 @@ var upperCasedCharacters = [
 // Function to prompt user for password options
 
 var pwArray = [];
-var pwLength
-getPasswordOptions();
+var pwLength = 0;
+
 
 function getPasswordOptions() {
 while (true) {
@@ -104,9 +104,7 @@ while (true) {
   } else {
     alert("Please choose a password length of at least 8 characters but no more than 128.");
   }
-}
-
-pwLength = parseInt("Pw Length " + pwLength);
+};
 
 
     // Proceed with the rest of your code for generating a password
@@ -122,20 +120,39 @@ pwLength = parseInt("Pw Length " + pwLength);
     if(confirm("Would you like to use special case characters?")){
       pwArray = pwArray.concat(specialCharacters);
     }
-    
+    break;
+    console.log(pwArray)
+
+    if (pwArray.length === 0) {
+      alert("Please select at least one character type.");
+
+      return pwArray;
+     
+}
 }
 
-console.log("Pw criteria options " +pwArray)
+
 
 // Function for getting a random element from an array
-function getRandom(arr) {
 
+function getRandom() {
+  var pw = "";
+  for (var i = 0; i < pwLength; i++) {
+    var arrayIndex = Math.floor(Math.random() * pwArray.length);
+    pw += pwArray[arrayIndex];
+  }
+
+  return pw;
 }
 
 // Function to generate password with user input
 function generatePassword() {
-
+  getPasswordOptions();     
+  var password = getRandom();   
+  return password;     
 }
+
+generatePassword();
 
 // Get references to the #generate element
 var generateBtn = document.querySelector('#generate');
