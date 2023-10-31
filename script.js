@@ -89,54 +89,42 @@ var upperCasedCharacters = [
 ];
 
 // Function to prompt user for password options
-
-
 var pwLength = 0;
 var pwArray = [];
 
-
 function getPasswordOptions() {
-while (true) {
-  pwLength = prompt("Choose a password length of at least 8 characters but no more than 128.");
+  while (true) {
+    pwLength = prompt("Choose a password length of at least 8 characters but no more than 128.");
 
-  if (!isNaN(pwLength) && pwLength >= 8 && pwLength <= 128 || false) {
-    console.log(pwLength);
-    break; 
-  } else {
-    alert("Please choose a password length of at least 8 characters but no more than 128.");
+    if (!isNaN(pwLength) && pwLength >= 8 && pwLength <= 128) {
+      console.log(pwLength);
+      break;
+    } else {
+      alert("Please choose a password length of at least 8 characters but no more than 128.");
+    }
   }
-};
 
+  // Proceed with the rest of your code for generating a password
+  if (confirm("Would you like to use lower case characters?")) {
+    pwArray = pwArray.concat(lowerCasedCharacters);
+  }
+  if (confirm("Would you like to use upper case characters?")) {
+    pwArray = pwArray.concat(upperCasedCharacters);
+  }
+  if (confirm("Would you like to use numeric characters?")) {
+    pwArray = pwArray.concat(numericCharacters);
+  }
+  if (confirm("Would you like to use special case characters?")) {
+    pwArray = pwArray.concat(specialCharacters);
+  }
+  console.log(pwArray);
 
-    // Proceed with the rest of your code for generating a password
-    
-    if(confirm("Would you like to use lower case characters?")){
-      pwArray = pwArray.concat(lowerCasedCharacters);
-    }
-    if(confirm("Would you like to use upper case characters?")){
-      pwArray = pwArray.concat(upperCasedCharacters);
-    }
-    if(confirm("Would you like to use numeric characters?")){
-      pwArray = pwArray.concat(numericCharacters);
-    }
-    if(confirm("Would you like to use special case characters?")){
-      pwArray = pwArray.concat(specialCharacters);
-    }
-    console.log(pwArray)
-
-    if (pwArray.length === 0) {
-      alert("Please select at least one character type.");
-
-
-      return pwArray;
-     
+  if (pwArray.length === 0) {
+    alert("Please choose at least one of the character types");
+  }
 }
-}
-
-
 
 // Function for getting a random element from an array
-
 function getRandom() {
   var pw = "";
   for (var i = 0; i < pwLength; i++) {
@@ -149,12 +137,10 @@ function getRandom() {
 
 // Function to generate password with user input
 function generatePassword() {
-  getPasswordOptions();     
-  var password = getRandom();   
-  return password;     
+  getPasswordOptions();
+  var password = getRandom();
+  return password;
 }
-
-generatePassword();
 
 // Get references to the #generate element
 var generateBtn = document.querySelector('#generate');
