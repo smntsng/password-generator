@@ -89,21 +89,43 @@ var upperCasedCharacters = [
 ];
 
 // Function to prompt user for password options
+
+var pwArray = [];
+var pwLength
+getPasswordOptions();
+
 function getPasswordOptions() {
-  var pwLength = prompt("Choose a password length of at least 8 characters but no more than 128.");
+while (true) {
+  pwLength = prompt("Choose a password length of at least 8 characters but no more than 128.");
 
-  pwLength = parseInt(pwLength);
-
-
-  if (isNaN(pwLength) || pwLength < 8 || pwLength > 128) {
-    alert("Please choose a password length of at least 8 characters but no more than 128.");
+  if (!isNaN(pwLength) && pwLength >= 8 && pwLength <= 128 || false) {
+    console.log(pwLength);
+    break; 
   } else {
+    alert("Please choose a password length of at least 8 characters but no more than 128.");
+  }
 }
-}
+
+pwLength = parseInt("Pw Length " + pwLength);
+
 
     // Proceed with the rest of your code for generating a password
-
+    if(confirm("Would you like to use lower case characters?")){
+      pwArray = pwArray.concat(lowerCasedCharacters);
+    }
+    if(confirm("Would you like to use upper case characters?")){
+      pwArray = pwArray.concat(upperCasedCharacters);
+    }
+    if(confirm("Would you like to use numeric characters?")){
+      pwArray = pwArray.concat(numericCharacters);
+    }
+    if(confirm("Would you like to use special case characters?")){
+      pwArray = pwArray.concat(specialCharacters);
+    }
     
+}
+
+console.log("Pw criteria options " +pwArray)
 
 // Function for getting a random element from an array
 function getRandom(arr) {
