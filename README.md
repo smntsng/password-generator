@@ -2,7 +2,7 @@
 
 The password generator can be used to randomly generate a password between 8 and 128 characters long. The user has the option of using lower case, upper case, numeric and special characters in the randomly generated password. 
 
-![alt text](assets/images/screenshot.png)
+![alt text](assets/images/screenshot.jpg)
 https://smntsng.github.io/password-generator/
 
 ## Instructions
