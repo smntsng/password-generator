@@ -90,8 +90,9 @@ var upperCasedCharacters = [
 
 // Function to prompt user for password options
 
-var pwArray = [];
+
 var pwLength = 0;
+var pwArray = [];
 
 
 function getPasswordOptions() {
@@ -108,6 +109,7 @@ while (true) {
 
 
     // Proceed with the rest of your code for generating a password
+    
     if(confirm("Would you like to use lower case characters?")){
       pwArray = pwArray.concat(lowerCasedCharacters);
     }
@@ -120,11 +122,11 @@ while (true) {
     if(confirm("Would you like to use special case characters?")){
       pwArray = pwArray.concat(specialCharacters);
     }
-    break;
     console.log(pwArray)
 
     if (pwArray.length === 0) {
       alert("Please select at least one character type.");
+
 
       return pwArray;
      
